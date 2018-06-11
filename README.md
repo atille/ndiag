@@ -16,9 +16,20 @@ $ julia ndiag.jl domain.com
 ```
 It'll produce a full report onto the STDOUT.
 
+```text
+Supported ports and actions:
+
+- 80 - http - drops the head
+- 443 - https - drops the head
+- 21 - ftp - drops the banner
+- 22 - ssh - drops the banner and version
+- 5000 - rocket - drops the head
+- 8080 - http alternative - drops the head
+```
+
 ## Todo
 
-Use argument --port to define specific ports to scan.
+Use argument --port to define specific ports to scan ; it should override the list of currently support TCP ports.
 
 ```bash
 ndiag domain.com --ports=80,443
