@@ -2,6 +2,7 @@ include("libs/net.jl")
 include("libs/view.jl")
 
 using HTTP
+using JSON
 
 function main(args::Array)
 
@@ -44,6 +45,11 @@ function main(target::String)
     if port_status[22] == true
         content = Net.get_ssh_banner(target)
         println(View.format_ssh(22, content))
+    end
+
+    if isdomain == true
+        println("-- DNS Zone --")
+        println(View.format_dns(Net.get_dns(JSON, target)))
     end
 end
 
